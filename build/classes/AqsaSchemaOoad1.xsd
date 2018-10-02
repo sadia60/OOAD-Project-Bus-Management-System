@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:complexType name="person" abstract="true">
+    <xs:sequence>
+      <xs:element name="address" type="xs:string" minOccurs="0"/>
+      <xs:element name="age" type="xs:int"/>
+      <xs:element name="email" type="xs:string" minOccurs="0"/>
+      <xs:element name="fname" type="xs:string" minOccurs="0"/>
+      <xs:element name="gender" type="xs:string" minOccurs="0"/>
+      <xs:element name="lname" type="xs:string" minOccurs="0"/>
+      <xs:element name="nic" type="xs:string" minOccurs="0"/>
+      <xs:element name="password" type="xs:string" minOccurs="0"/>
+      <xs:element name="phoneNo" type="xs:string" minOccurs="0"/>
+      <xs:element name="username" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="manager">
+    <xs:complexContent>
+      <xs:extension base="person">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="receptionist">
+    <xs:complexContent>
+      <xs:extension base="person">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="schedule">
+    <xs:sequence>
+      <xs:element name="m_Route" type="route" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="route">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="bushostess">
+    <xs:complexContent>
+      <xs:extension base="person">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="bus">
+    <xs:sequence>
+      <xs:element name="totalSeats" type="xs:int"/>
+      <xs:element name="mReservation" type="reservation" minOccurs="0"/>
+      <xs:element name="mSeat" type="seat" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="reservation">
+    <xs:sequence>
+      <xs:element name="m_Passenger" type="passenger" minOccurs="0"/>
+      <xs:element name="m_Receptionist" type="receptionist" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="passenger">
+    <xs:complexContent>
+      <xs:extension base="person">
+        <xs:sequence>
+          <xs:element name="mPayment" type="payment" minOccurs="0"/>
+          <xs:element name="fback" type="feedback" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="payment">
+    <xs:sequence>
+      <xs:element name="amount" type="xs:int"/>
+      <xs:element name="tick" type="ticket" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ticket">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="feedback">
+    <xs:sequence>
+      <xs:element name="comments" type="xs:string" minOccurs="0"/>
+      <xs:element name="questions" type="xs:string" minOccurs="0"/>
+      <xs:element name="suggestions" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="seat">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="driver">
+    <xs:complexContent>
+      <xs:extension base="person">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="mainClass">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="dbHandler">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="dbController">
+    <xs:complexContent>
+      <xs:extension base="httpServlet">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="httpServlet" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="genericServlet">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="genericServlet" abstract="true">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="mysqlCon">
+    <xs:sequence/>
+  </xs:complexType>
+</xs:schema>
+
